@@ -2,9 +2,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/dbe97dbdfbd55344c38f/maintainability)](https://codeclimate.com/github/hisptz/ngx-seed-app/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dbe97dbdfbd55344c38f/test_coverage)](https://codeclimate.com/github/hisptz/ngx-seed-app/test_coverage)
 
-# Angular DHIS2 based seed app
+# Interactive Dashboard
 
-Boilerplate codes to fast track developing DHIS2 applications based on Angular framework
+Interactive dashboard application for DHIS2
 
 ## Prerequisites
 

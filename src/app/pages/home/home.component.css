@@ -1,0 +1,26 @@
+.dashboard-container {
+  grid-gap: 3px;
+  margin: 10px;
+}
+
+.dashboard-header {
+  grid-column: span 2;
+  border: solid thin;
+  height: calc(100vh - 60px);
+}
+
+.dashboard-menu {
+  height: 40%;
+  border: solid thin;
+}
+
+.dashboard-global-filters {
+  height: 60%;
+  border: solid thin;
+}
+
+.dashboard-content {
+  grid-column: span 10;
+  border: solid thin;
+  height: 50vh;
+}

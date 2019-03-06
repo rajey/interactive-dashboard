@@ -1,0 +1,9 @@
+<div class="dashboard-menu-list-container">
+  <ul class="dashboard-menu-list">
+    <li *ngFor="let dashboardMenuItem of dashboardMenuList">
+      <app-dashboard-menu-item
+        [dashboardMenuItem]="dashboardMenuItem"
+      ></app-dashboard-menu-item>
+    </li>
+  </ul>
+</div>

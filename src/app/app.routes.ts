@@ -5,6 +5,11 @@ import { HomeComponent } from './pages';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'dashboards',
+    pathMatch: 'full'
+  },
+  {
+    path: 'dashboards',
     component: HomeComponent
   }
 ];
