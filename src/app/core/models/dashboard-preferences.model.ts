@@ -1,4 +1,4 @@
 export interface DashboardPreferences {
-  id: string;
+  namespace: string;
   useDataStoreAsSource: boolean;
 }

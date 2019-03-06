@@ -1,16 +1,15 @@
 import { Action } from '@ngrx/store';
-import { User, SystemInfo, ErrorMessage } from 'src/app/core';
+import { Dashboard, ErrorMessage, DashboardPreferences } from 'src/app/core';
 
 export enum DashboardActionTypes {
   LoadDashboards = '[Dashboard] Load Dashboards',
   LoadDashboardsFail = '[Dashboard] Load Dashboards fail',
-  LoadDashboardsSuccess = '[Dashboard] Load Dashboards success'
+  AddDashboards = '[Dashboard] Add Dashboards'
 }
 
 export class LoadDashboardsAction implements Action {
   readonly type = DashboardActionTypes.LoadDashboards;
-
-  constructor(public currentUser: User, public systemInfo: SystemInfo) {}
+  constructor(public dashboardPreferences: DashboardPreferences) {}
 }
 
 export class LoadDashboardsFailAction implements Action {
@@ -18,12 +17,12 @@ export class LoadDashboardsFailAction implements Action {
   constructor(public error: ErrorMessage) {}
 }
 
-export class LoadDashboardsSuccessAction implements Action {
-  readonly type = DashboardActionTypes.LoadDashboardsSuccess;
-  constructor(public dashboards: any[], public currentUser: User) {}
+export class AddDashboardsAction implements Action {
+  readonly type = DashboardActionTypes.AddDashboards;
+  constructor(public dashboards: Dashboard[]) {}
 }
 
 export type DashboardActions =
   | LoadDashboardsAction
   | LoadDashboardsFailAction
-  | LoadDashboardsSuccessAction;
+  | AddDashboardsAction;

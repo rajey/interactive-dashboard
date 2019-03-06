@@ -5,7 +5,7 @@
     <!-- dashboard menu -->
     <div class="dashboard-menu">
       <app-dashboard-menu-list
-        [dashboardMenuList]="[{ id: 1, name: 'ANC' }, { id: 2, name: 'PNC' }]"
+        [dashboardMenuList]="dashboardMenuList$ | async"
       ></app-dashboard-menu-list>
     </div>
     <!-- end of dashboard menu -->

@@ -1,4 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/store/reducers';
+import { Observable } from 'rxjs';
+import { DashboardMenuItem } from 'src/app/core';
+import { getDashboardMenuList } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +12,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  dashboardMenuList$: Observable<DashboardMenuItem[]>;
+  constructor(private store: Store<State>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dashboardMenuList$ = this.store.select(getDashboardMenuList);
+  }
 }

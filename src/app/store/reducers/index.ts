@@ -1,16 +1,11 @@
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store';
-import { environment } from '../../../environments/environment';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 
-import * as fromUser from '../reducers/user.reducer';
-import * as fromSystemInfo from '../reducers/system-info.reducer';
+import { environment } from '../../../environments/environment';
 import * as fromDashboardPreferences from '../reducers/dashboard-preferences.reducer';
-import { RouterReducerState, routerReducer } from '@ngrx/router-store';
+import * as fromDashboard from '../reducers/dashboard.reducer';
+import * as fromSystemInfo from '../reducers/system-info.reducer';
+import * as fromUser from '../reducers/user.reducer';
 
 export interface State {
   /**
@@ -32,13 +27,19 @@ export interface State {
    * Dashboard preferences
    */
   dashboardPreferences: fromDashboardPreferences.State;
+
+  /**
+   * Dashboards
+   */
+  dashboard: fromDashboard.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
   user: fromUser.reducer,
   systemInfo: fromSystemInfo.reducer,
   route: routerReducer,
-  dashboardPreferences: fromDashboardPreferences.reducer
+  dashboardPreferences: fromDashboardPreferences.reducer,
+  dashboard: fromDashboard.reducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
