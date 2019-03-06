@@ -2,9 +2,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { User, ErrorMessage } from '../../core';
 import { UserActions, UserActionTypes } from '../actions/user.actions';
 
-export interface State extends EntityState<User> {
-  // additional entities state properties
-
+export interface State {
   /**
    * User loading status
    */
@@ -24,17 +22,20 @@ export interface State extends EntityState<User> {
    * User loading error
    */
   error: ErrorMessage;
+
+  /**
+   * user details
+   */
+  currentUser: User;
 }
 
-export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
-
-export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
+export const initialState: State = {
   loading: false,
   loaded: false,
   hasError: false,
-  error: null
-});
+  error: null,
+  currentUser: null
+};
 
 export function reducer(state = initialState, action: UserActions): State {
   switch (action.type) {
@@ -49,11 +50,12 @@ export function reducer(state = initialState, action: UserActions): State {
     }
 
     case UserActionTypes.AddCurrentUser: {
-      return adapter.addOne(action.currentUser, {
+      return {
         ...state,
+        currentUser: action.currentUser,
         loading: false,
         loaded: true
-      });
+      };
     }
 
     case UserActionTypes.LoadCurrentUserFail: {
@@ -67,13 +69,3 @@ export function reducer(state = initialState, action: UserActions): State {
 }
 
 // additional selectors
-
-/**
- * User loading state selector
- */
-export const getUserLoadingState = (state: State) => state.loading;
-export const getUserLoadedState = (state: State) => state.loaded;
-export const getUserHasErrorState = (state: State) => state.hasError;
-export const getUserErrorState = (state: State) => state.error;
-
-export const { selectAll: selectAllUsers } = adapter.getSelectors();
