@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/hisptz/ngx-seed-app.svg?branch=master)](https://travis-ci.org/hisptz/ngx-seed-app)
-[![Maintainability](https://api.codeclimate.com/v1/badges/dbe97dbdfbd55344c38f/maintainability)](https://codeclimate.com/github/hisptz/ngx-seed-app/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/dbe97dbdfbd55344c38f/test_coverage)](https://codeclimate.com/github/hisptz/ngx-seed-app/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1a40020cf2930fd268d8/maintainability)](https://codeclimate.com/github/rajey/interactive-dashboard/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1a40020cf2930fd268d8/test_coverage)](https://codeclimate.com/github/rajey/interactive-dashboard/test_coverage)
 
 # Interactive Dashboard
 
