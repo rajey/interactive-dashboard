@@ -1,9 +1,7 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { SystemInfo, ErrorMessage } from '../../core';
+import { ErrorMessage, SystemInfo } from '../../core';
 import { SystemInfoActions, SystemInfoActionTypes } from '../actions';
 
-export interface State extends EntityState<SystemInfo> {
-  // additional entities state properties
+export interface State {
   /**
    * SystemInfo loading status
    */
@@ -23,33 +21,26 @@ export interface State extends EntityState<SystemInfo> {
    * SystemInfo loading error
    */
   error: ErrorMessage;
+
+  /**
+   * System info
+   */
+  systemInfo: SystemInfo;
 }
 
-export const adapter: EntityAdapter<SystemInfo> = createEntityAdapter<
-  SystemInfo
->();
-
-export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
+export const initialState: State = {
   loading: false,
   loaded: false,
   hasError: false,
-  error: null
-});
+  error: null,
+  systemInfo: null
+};
 
 export function reducer(
   state = initialState,
   action: SystemInfoActions
 ): State {
   switch (action.type) {
-    case SystemInfoActionTypes.AddSystemInfo: {
-      return adapter.addOne(action.systemInfo, {
-        ...state,
-        loading: false,
-        loaded: true
-      });
-    }
-
     case SystemInfoActionTypes.LoadSystemInfo: {
       return {
         ...state,
@@ -57,6 +48,15 @@ export function reducer(
         loaded: false,
         hasError: false,
         error: null
+      };
+    }
+
+    case SystemInfoActionTypes.AddSystemInfo: {
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        systemInfo: action.systemInfo
       };
     }
 
@@ -69,10 +69,3 @@ export function reducer(
     }
   }
 }
-
-export const getSystemInfoLoadingState = (state: State) => state.loading;
-export const getSystemInfoLoadedState = (state: State) => state.loaded;
-export const getSystemInfoHasErrorState = (state: State) => state.hasError;
-export const getSystemInfoErrorState = (state: State) => state.error;
-
-export const { selectAll: getSystemInfosState } = adapter.getSelectors();

@@ -1,16 +1,17 @@
 import { createSelector } from '@ngrx/store';
-import { getRootState, State } from '../reducers';
-import * as fromUser from '../reducers/user.reducer';
+
 import { User } from '../../core';
+import { getRootState, State } from '../reducers';
+import { State as UserState } from '../reducers/user.reducer';
 
 const getUserState = createSelector(
   getRootState,
-  (state: State) => state.user
+  (state: State) => (state ? state.user : null)
 );
 
 export const getCurrentUser = createSelector(
   getUserState,
-  (userState: fromUser.State) => userState.currentUser
+  (userState: UserState) => (userState ? userState.currentUser : null)
 );
 
 export const getCurrentUserManagementAuthoritiesStatus = createSelector(
