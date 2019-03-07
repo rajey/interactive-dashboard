@@ -36,7 +36,7 @@ export class LoadDashboardItemFailAction implements Action {
   constructor(public error: ErrorMessage, public dashboardItemId: string) {}
 }
 
-export class RemoveDashboardItemItemAction implements Action {
+export class RemoveDashboardItemAction implements Action {
   readonly type = DashboardItemActionTypes.RemoveDashboardItemItem;
   constructor(public dashboardId: string, public dashboardItemId: string) {}
 }
@@ -49,7 +49,7 @@ export class UpdateDashboardItemAction implements Action {
 export type DashboardItemActions =
   | AddDashboardItemsAction
   | AddDashboardItemAction
-  | RemoveDashboardItemItemAction
+  | RemoveDashboardItemAction
   | UpdateDashboardItemAction
   | LoadDashboardItemAction
   | InitializeDashboardItemsAction

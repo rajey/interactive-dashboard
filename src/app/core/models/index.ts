@@ -6,3 +6,4 @@ export * from './dashboard.model';
 export * from './dashboard-access.model';
 export * from './dashboard-preferences.model';
 export * from './dashboard-item.model';
+export * from './favorite.model';

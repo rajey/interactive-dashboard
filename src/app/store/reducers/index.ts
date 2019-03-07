@@ -7,6 +7,7 @@ import * as fromDashboard from '../reducers/dashboard.reducer';
 import * as fromSystemInfo from '../reducers/system-info.reducer';
 import * as fromUser from '../reducers/user.reducer';
 import * as fromDashboardItem from '../reducers/dashboard-item.reducer';
+import * as fromFavorite from './favorite.reducer';
 
 export interface State {
   /**
@@ -38,6 +39,11 @@ export interface State {
    * Dashoard Items
    */
   dashboardItem: fromDashboardItem.State;
+
+  /**
+   * Favorite
+   */
+  favorite: fromFavorite.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -46,7 +52,8 @@ export const reducers: ActionReducerMap<State> = {
   route: routerReducer,
   dashboardPreferences: fromDashboardPreferences.reducer,
   dashboard: fromDashboard.reducer,
-  dashboardItem: fromDashboardItem.reducer
+  dashboardItem: fromDashboardItem.reducer,
+  favorite: fromFavorite.reducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production

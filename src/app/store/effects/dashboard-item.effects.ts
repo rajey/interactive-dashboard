@@ -19,6 +19,7 @@ import {
 } from '../actions/dashboard-item.actions';
 import { State } from '../reducers';
 import { getAllDashboardItems } from '../selectors';
+import { LoadFavoriteAction } from '../actions/favorite.actions';
 
 @Injectable()
 export class DashboardItemEffects {
@@ -64,6 +65,23 @@ export class DashboardItemEffects {
             of(new LoadDashboardItemFailAction(error, action.dashboardItem.id))
           )
         );
+    })
+  );
+
+  @Effect({ dispatch: false })
+  addDashboardItem$: Observable<any> = this.actions$.pipe(
+    ofType(DashboardItemActionTypes.AddDashboardItem),
+    map((action: AddDashboardItemAction) => {
+      if (action.dashboardItem) {
+        const favoriteType = _.camelCase(action.dashboardItem.type);
+        const favorite = action.dashboardItem[favoriteType];
+
+        if (favorite && _.isPlainObject(favorite)) {
+          this.store.dispatch(
+            new LoadFavoriteAction(favorite.id, favoriteType)
+          );
+        }
+      }
     })
   );
   constructor(
