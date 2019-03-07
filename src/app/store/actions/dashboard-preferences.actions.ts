@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { DashboardPreferences } from 'src/app/core';
+import { DashboardPreferences, User } from 'src/app/core';
 
 export enum DashboardPreferencesActionTypes {
   LoadDashboardPreferences = '[DashboardPreference] Load dashboard preferences',
@@ -9,10 +9,14 @@ export enum DashboardPreferencesActionTypes {
 
 export class LoadDashboardPreferencesAction implements Action {
   readonly type = DashboardPreferencesActionTypes.LoadDashboardPreferences;
+  constructor(public currentUser: User) {}
 }
 export class AddDashboardPreferencesAction implements Action {
   readonly type = DashboardPreferencesActionTypes.AddDashboardPreferences;
-  constructor(public dashboardPreferences: DashboardPreferences) {}
+  constructor(
+    public dashboardPreferences: DashboardPreferences,
+    public currentUser: User
+  ) {}
 }
 export class LoadDashboardPreferencesFailAction implements Action {
   readonly type = DashboardPreferencesActionTypes.LoadDashboardPreferencesFail;

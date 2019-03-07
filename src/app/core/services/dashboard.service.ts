@@ -19,7 +19,8 @@ export class DashboardService {
   private _getDashboardsFromApi() {
     return this.httpClient
       .get(
-        `dashboards.json?fields=id,name,description,access,created,lastUpdated,favorite,favorites&paging=false`
+        'dashboards.json?fields=id,name,user[id,name],description,access,' +
+          'created,lastUpdated,favorite,dashboardItems[id,type],favorites&paging=false'
       )
       .pipe(
         map((dashboardResponse: any) => dashboardResponse.dashboards || [])

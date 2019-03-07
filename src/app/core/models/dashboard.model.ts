@@ -1,4 +1,5 @@
 import { DashboardAccess } from './dashboard-access.model';
+import { DashboardItem } from './dashboard-item.model';
 
 export interface Dashboard {
   id: string;
@@ -6,6 +7,7 @@ export interface Dashboard {
   created?: string;
   lastUpdated?: string;
   description?: string;
+  favorite: boolean;
   bookmarkPending?: boolean;
   supportBookmark?: boolean;
   access?: DashboardAccess;
@@ -20,11 +22,10 @@ export interface Dashboard {
   error?: any;
   namespace?: string;
   unSaved?: boolean;
-  globalSelections?: any[];
   publicAccess: string;
   externalAccess: boolean;
   userGroupAccesses: any[];
-  dashboardItems?: any[];
+  dashboardItems: DashboardItem[];
   userAccesses: any[];
   user: {
     id: string;

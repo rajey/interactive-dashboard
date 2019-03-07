@@ -1,29 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Store, Action } from '@ngrx/store';
-import { Observable, of, defer } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as _ from 'lodash';
+import { Observable, of } from 'rxjs';
 import {
   catchError,
-  first,
   map,
   switchMap,
+  tap,
   withLatestFrom
 } from 'rxjs/operators';
-import { DashboardPreferences } from 'src/app/core';
+import {
+  getCurrentDashboardId,
+  getStandardizedDashboards,
+  User
+} from 'src/app/core';
 import { DashboardService } from 'src/app/core/services/dashboard.service';
 
+import {
+  AddDashboardPreferencesAction,
+  DashboardPreferencesActionTypes
+} from '../actions/dashboard-preferences.actions';
 import {
   AddDashboardsAction,
   DashboardActionTypes,
   LoadDashboardsAction,
-  LoadDashboardsFailAction
+  LoadDashboardsFailAction,
+  SetCurrentDashboardAction
 } from '../actions/dashboard.actions';
 import { State } from '../reducers';
-import { getDashboardPreferences } from '../selectors';
-import {
-  DashboardPreferencesActionTypes,
-  AddDashboardPreferencesAction
-} from '../actions/dashboard-preferences.actions';
+import { getRouteUrl, getCurrentUser } from '../selectors';
+import { InitializeDashboardItemsAction } from '../actions/dashboard-item.actions';
 
 @Injectable()
 export class DashboardEffects {
@@ -32,20 +39,65 @@ export class DashboardEffects {
     ofType(DashboardPreferencesActionTypes.AddDashboardPreferences),
     map(
       (action: AddDashboardPreferencesAction) =>
-        new LoadDashboardsAction(action.dashboardPreferences)
+        new LoadDashboardsAction(
+          action.dashboardPreferences,
+          action.currentUser
+        )
     )
   );
   @Effect()
   loadAllDashboards$: Observable<any> = this.actions$.pipe(
     ofType(DashboardActionTypes.LoadDashboards),
-    switchMap((action: LoadDashboardsAction) =>
+    withLatestFrom(this.store.select(getRouteUrl)),
+    switchMap(([action, routeUrl]: [LoadDashboardsAction, string]) =>
       this.dashboardService.getDashboards(action.dashboardPreferences).pipe(
-        map(
-          (dashboardResponse: any) => new AddDashboardsAction(dashboardResponse)
-        ),
+        switchMap((dashboards: any[]) => {
+          const standardizedDashboards = getStandardizedDashboards(
+            dashboards,
+            action.currentUser
+          );
+
+          const currentDashboard = _.find(standardizedDashboards, [
+            'id',
+            getCurrentDashboardId(routeUrl, dashboards, action.currentUser)
+          ]);
+
+          return [
+            new AddDashboardsAction(standardizedDashboards),
+            new SetCurrentDashboardAction(currentDashboard)
+          ];
+        }),
         catchError((error: any) => of(new LoadDashboardsFailAction(error)))
       )
     )
+  );
+
+  @Effect({ dispatch: false })
+  setCurrentDashboard$: Observable<any> = this.actions$.pipe(
+    ofType(DashboardActionTypes.SetCurrentDashboard),
+    withLatestFrom(this.store.select(getCurrentUser)),
+    tap(([action, currentUser]: [SetCurrentDashboardAction, User]) => {
+      // Set current dashboard id into local storage
+      if (
+        currentUser &&
+        currentUser.userCredentials &&
+        currentUser.userCredentials.username &&
+        action.dashboard &&
+        action.dashboard.id
+      ) {
+        localStorage.setItem(
+          'dhis2.dashboard.current.' + currentUser.userCredentials.username,
+          action.dashboard.id
+        );
+      }
+
+      // Load dashboard items for the current dashboard
+      if (action.dashboard && action.dashboard.dashboardItems) {
+        this.store.dispatch(
+          new InitializeDashboardItemsAction(action.dashboard.dashboardItems)
+        );
+      }
+    })
   );
 
   constructor(

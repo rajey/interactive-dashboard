@@ -8,7 +8,7 @@ const getDashboardState = createSelector(
   (state: State) => state.dashboard
 );
 
-const {
+export const {
   selectEntities: getDashboardEntities,
   selectAll: getAllDashboards
 } = adapter.getSelectors(getDashboardState);
