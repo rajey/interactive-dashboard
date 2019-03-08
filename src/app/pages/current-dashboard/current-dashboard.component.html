@@ -1,3 +1,21 @@
-<p>
-  current-dashboard works!
-</p>
+<div class="current-dashboard-container">
+  <!-- current dashboard header -->
+  <div class="current-dashboard-header">
+    {{ (currentDashboard$ | async)?.name }}
+  </div>
+  <!-- end of current dashboard header -->
+  <!-- dashboard item list -->
+  <div class="app-container dashboard-item-list">
+    <div
+      class="dashboard-item"
+      [ngStyle]="{
+        'grid-column': dashboardItem.gridColumn,
+        height: dashboardItem.height
+      }"
+      *ngFor="let dashboardItem of (currentDashboard$ | async)?.dashboardItems"
+    >
+      {{ dashboardItem | json }}
+    </div>
+  </div>
+  <!-- end of dashboard item list -->
+</div>

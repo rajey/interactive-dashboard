@@ -21,6 +21,6 @@
 
 .dashboard-content {
   grid-column: span 10;
+  max-height: calc(100vh - 60px);
   border: solid thin;
-  height: 50vh;
 }

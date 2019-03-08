@@ -5,6 +5,7 @@ import {
 import { createSelector } from '@ngrx/store';
 import { getRootState, State } from '../reducers';
 import { Dashboard } from 'src/app/core';
+import { getDashboardItemEntities } from './dashboard-item.selectors';
 
 const getDashboardState = createSelector(
   getRootState,
@@ -23,9 +24,30 @@ export const getCurrentDashboardId = createSelector(
 
 export const getCurrentDashboard = createSelector(
   getDashboardEntities,
+  getDashboardItemEntities,
   getCurrentDashboardId,
-  (dashboardEntities: any, currentDashboardId: string) =>
-    dashboardEntities ? dashboardEntities[currentDashboardId] : null
+  (
+    dashboardEntities: any,
+    dashboardItemEntities: any,
+    currentDashboardId: string
+  ) => {
+    const currentDashboard = dashboardEntities
+      ? dashboardEntities[currentDashboardId]
+      : null;
+
+    return currentDashboard
+      ? {
+          ...currentDashboard,
+          dashboardItems: (currentDashboard.dashboardItems || [])
+            .map((dashboardItem: any) =>
+              dashboardItemEntities
+                ? dashboardItemEntities[dashboardItem.id]
+                : null
+            )
+            .filter((dashboardItem: any) => dashboardItem)
+        }
+      : null;
+  }
 );
 
 export const getDashboardById = dashboardId =>

@@ -3,6 +3,8 @@ export interface DashboardItem {
   type: string;
   height?: number;
   width?: number;
+  gridColumn?: string;
+  gridRow?: string;
   shape?: string;
   x?: number;
   y?: number;

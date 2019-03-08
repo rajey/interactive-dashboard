@@ -7,7 +7,8 @@ import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import {
   DashboardItem,
   DashboardItemService,
-  ErrorMessage
+  ErrorMessage,
+  getStandardizedDashboardItem
 } from 'src/app/core';
 
 import {
@@ -59,7 +60,10 @@ export class DashboardItemEffects {
         .getDashboardItem(action.dashboardItem.id, action.dashboardItem.type)
         .pipe(
           map(
-            (dashboardItem: any) => new AddDashboardItemAction(dashboardItem)
+            (dashboardItem: any) =>
+              new AddDashboardItemAction(
+                getStandardizedDashboardItem(dashboardItem)
+              )
           ),
           catchError((error: ErrorMessage) =>
             of(new LoadDashboardItemFailAction(error, action.dashboardItem.id))

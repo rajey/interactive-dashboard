@@ -6,3 +6,7 @@ export * from './get-standardized-dashboards.helper';
 export * from './get-dashboard-items-from-dashboards.helper';
 export * from './get-current-dashboard-id.helper';
 export * from './get-favorite-url.helper';
+export * from './get-dashboard-item-grid-column-from-shape.helper';
+export * from './get-dashboard-item-grid-column-from-width.helper';
+export * from './get-dashboard-item-grid-column.helper';
+export * from './get-standardized-dashboard-item.helper';

@@ -1,12 +1,13 @@
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from '../../../environments/environment';
+import * as fromDashboardItem from '../reducers/dashboard-item.reducer';
 import * as fromDashboardPreferences from '../reducers/dashboard-preferences.reducer';
 import * as fromDashboard from '../reducers/dashboard.reducer';
 import * as fromSystemInfo from '../reducers/system-info.reducer';
 import * as fromUser from '../reducers/user.reducer';
-import * as fromDashboardItem from '../reducers/dashboard-item.reducer';
 import * as fromFavorite from './favorite.reducer';
 
 export interface State {
@@ -57,7 +58,7 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? []
+  ? [storeFreeze]
   : [];
 
 /**
