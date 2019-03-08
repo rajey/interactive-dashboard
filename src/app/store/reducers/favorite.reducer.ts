@@ -25,7 +25,7 @@ export function reducer(
         state
       );
     case FavoriteActionTypes.AddFavorite: {
-      return adapter.addOne(action.favorite, state);
+      return action.favorite ? adapter.addOne(action.favorite, state) : state;
     }
 
     case FavoriteActionTypes.LoadFavoriteFail: {

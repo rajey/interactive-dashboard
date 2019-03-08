@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
-import { Observable, from, of } from 'rxjs';
-import { tap, withLatestFrom, mergeMap, map, catchError } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { catchError, map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import {
   DashboardItem,
   DashboardItemService,
@@ -11,15 +11,15 @@ import {
 } from 'src/app/core';
 
 import {
+  AddDashboardItemAction,
   DashboardItemActionTypes,
   InitializeDashboardItemsAction,
   LoadDashboardItemAction,
-  AddDashboardItemAction,
   LoadDashboardItemFailAction
 } from '../actions/dashboard-item.actions';
+import { LoadFavoriteAction } from '../actions/favorite.actions';
 import { State } from '../reducers';
 import { getAllDashboardItems } from '../selectors';
-import { LoadFavoriteAction } from '../actions/favorite.actions';
 
 @Injectable()
 export class DashboardItemEffects {

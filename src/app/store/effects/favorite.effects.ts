@@ -31,7 +31,7 @@ export class FavoriteEffects {
         DashboardPreferences
       ]) => {
         if (!action.favoriteId && action.favoriteType) {
-          return of(null);
+          return of(new AddFavoriteAction(null));
         }
 
         return this.favoriteService

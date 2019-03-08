@@ -7,7 +7,7 @@ export enum DashboardItemActionTypes {
   InitializeDashboardItems = '[DashboardItem] Initialize dashboard items',
   LoadDashboardItemFail = '[DashboardItem] Load dashboard item fail',
   UpdateDashboardItem = '[DashboardItem] Add or Update dashboard item',
-  AddDashboardItem = '[DashboardItem] Add dashboard Item item',
+  AddDashboardItem = '[DashboardItem] Add dashboard Item',
   RemoveDashboardItemItem = '[DashboardItem] Remove dashboard item'
 }
 

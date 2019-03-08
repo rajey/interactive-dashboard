@@ -31,6 +31,7 @@ import {
 import { State } from '../reducers';
 import { getRouteUrl, getCurrentUser } from '../selectors';
 import { InitializeDashboardItemsAction } from '../actions/dashboard-item.actions';
+import { Go } from '../actions';
 
 @Injectable()
 export class DashboardEffects {
@@ -91,8 +92,13 @@ export class DashboardEffects {
         );
       }
 
-      // Load dashboard items for the current dashboard
       if (action.dashboard && action.dashboard.dashboardItems) {
+        // Navigate to the respective dashboard
+        this.store.dispatch(
+          new Go({ path: [`/dashboards/${action.dashboard.id}`] })
+        );
+
+        // Load dashboard items for the current dashboard
         this.store.dispatch(
           new InitializeDashboardItemsAction(action.dashboard.dashboardItems)
         );

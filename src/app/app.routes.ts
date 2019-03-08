@@ -1,6 +1,6 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './pages';
+import { HomeComponent, CurrentDashboardComponent } from './pages';
 
 export const routes: Routes = [
   {
@@ -10,7 +10,13 @@ export const routes: Routes = [
   },
   {
     path: 'dashboards',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: ':dashboardId',
+        component: CurrentDashboardComponent
+      }
+    ]
   }
 ];
 

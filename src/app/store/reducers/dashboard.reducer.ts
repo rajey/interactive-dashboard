@@ -53,6 +53,12 @@ export function reducer(state = initialState, action: DashboardActions): State {
       return { ...state, loading: false, hasError: true, error: action.error };
     }
 
+    case DashboardActionTypes.SetCurrentDashboard: {
+      return action.dashboard
+        ? { ...state, currentDashboard: action.dashboard.id }
+        : state;
+    }
+
     default:
       return state;
   }
