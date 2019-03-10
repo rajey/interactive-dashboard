@@ -5,11 +5,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './app.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { VisualizationModule } from './visualization/visualization.module';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         NgxDhis2MenuModule,
+        VisualizationModule,
         RouterTestingModule,
         HttpClientModule,
         TranslateModule.forRoot({

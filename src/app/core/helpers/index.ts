@@ -18,3 +18,4 @@ export * from './generate-uid.helper';
 export * from './get-dimension-name.helper';
 export * from './get-sanitized-dimension-groups.helper';
 export * from './get-visualization-layers-from-favorite.helper';
+export * from './get-standardized-visualization-type.helper';

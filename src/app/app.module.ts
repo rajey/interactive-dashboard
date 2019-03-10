@@ -24,6 +24,7 @@ import { effects } from './store/effects';
 import { metaReducers, reducers } from './store/reducers';
 import { containers } from './containers';
 import { AnalyticsModule } from './analytics/analytics.module';
+import { VisualizationModule } from './visualization/visualization.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
 
     AnalyticsModule,
+    VisualizationModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
