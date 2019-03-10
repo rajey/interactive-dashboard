@@ -8,7 +8,8 @@ export enum DashboardItemActionTypes {
   LoadDashboardItemFail = '[DashboardItem] Load dashboard item fail',
   UpdateDashboardItem = '[DashboardItem] Add or Update dashboard item',
   AddDashboardItem = '[DashboardItem] Add dashboard Item',
-  RemoveDashboardItemItem = '[DashboardItem] Remove dashboard item'
+  RemoveDashboardItem = '[DashboardItem] Remove dashboard item',
+  LoadDashboardItemAnalytics = '[DashboardItem] Load Dashboard Item analytics'
 }
 
 export class InitializeDashboardItemsAction implements Action {
@@ -37,7 +38,7 @@ export class LoadDashboardItemFailAction implements Action {
 }
 
 export class RemoveDashboardItemAction implements Action {
-  readonly type = DashboardItemActionTypes.RemoveDashboardItemItem;
+  readonly type = DashboardItemActionTypes.RemoveDashboardItem;
   constructor(public dashboardId: string, public dashboardItemId: string) {}
 }
 

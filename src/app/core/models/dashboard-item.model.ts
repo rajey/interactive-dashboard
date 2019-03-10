@@ -9,6 +9,7 @@ export interface DashboardItem {
   x?: number;
   y?: number;
   interpretationCount?: number;
+  visualizationLayers?: any[];
   chart?: { id: string; name?: string };
   reportTable?: { id: string; name?: string };
   map?: { id: string; name?: string };

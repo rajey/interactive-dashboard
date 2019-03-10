@@ -5,6 +5,6 @@ export function getDashboardItemGripColumnFromWidth(
     window.innerWidth ||
     document.documentElement.clientWidth ||
     document.body.clientWidth;
-  console.log(windowWidth);
+  console.log(windowWidth, dashboardItemWidth);
   return 'span 4';
 }

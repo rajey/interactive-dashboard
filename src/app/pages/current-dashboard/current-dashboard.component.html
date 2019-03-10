@@ -14,7 +14,7 @@
       }"
       *ngFor="let dashboardItem of (currentDashboard$ | async)?.dashboardItems"
     >
-      {{ dashboardItem | json }}
+      {{ dashboardItem.visualizationLayers | json }}
     </div>
   </div>
   <!-- end of dashboard item list -->

@@ -22,6 +22,8 @@ import { CoreModule, RouteSerializer } from './core';
 import { pages } from './pages';
 import { effects } from './store/effects';
 import { metaReducers, reducers } from './store/reducers';
+import { containers } from './containers';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, ...pages, ...components],
+  declarations: [AppComponent, ...pages, ...components, ...containers],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -41,6 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         users: 'id'
       }
     }),
+
+    AnalyticsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),

@@ -11,7 +11,7 @@
 .dashboard-item-list {
   border: solid thin;
   grid-column: span 12;
-  max-height: calc(100% - 70px);
+  max-height: calc(100vh - 130px);
   overflow: auto;
 }
 
