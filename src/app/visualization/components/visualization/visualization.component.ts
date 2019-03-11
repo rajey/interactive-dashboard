@@ -1,9 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-visualization',
   templateUrl: './visualization.component.html',
-  styleUrls: ['./visualization.component.css']
+  styleUrls: ['./visualization.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VisualizationComponent implements OnInit {
   @Input()
@@ -14,6 +20,9 @@ export class VisualizationComponent implements OnInit {
 
   @Input()
   visualizationType: string;
+
+  @Input()
+  visualizationHeight: string;
   constructor() {}
 
   ngOnInit() {}

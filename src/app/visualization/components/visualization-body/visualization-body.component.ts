@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { VisualizationLayer } from 'src/app/core/models/visualization-layer.model';
 
 @Component({
   selector: 'app-visualization-body',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./visualization-body.component.css']
 })
 export class VisualizationBodyComponent implements OnInit {
+  @Input()
+  visualizationLayers: VisualizationLayer[];
+  @Input()
+  visualizationHeight: string;
 
-  constructor() { }
+  @Input()
+  visualizationId: string;
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

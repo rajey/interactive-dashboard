@@ -34,7 +34,7 @@ export class ChartListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    if (this.visualizationLayers.length > 0) {
+    if (this.visualizationLayers && this.visualizationLayers.length > 0) {
       this.chartLayers = this.visualizationLayers.map(
         (layer: any, layerIndex: number) => {
           return {

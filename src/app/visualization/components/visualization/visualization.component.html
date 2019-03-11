@@ -1,5 +1,9 @@
 <div class="visualization-container">
-  <div class="visualization-body">
-    <app-visualization-body></app-visualization-body>
+  <div class="visualization-body" *ngIf="visualizationLayers">
+    <app-visualization-body
+      [visualizationLayers]="visualizationLayers"
+      [visualizationId]="visualizationId"
+      [visualizationHeight]="visualizationHeight"
+    ></app-visualization-body>
   </div>
 </div>

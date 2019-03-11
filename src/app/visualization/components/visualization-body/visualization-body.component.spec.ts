@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VisualizationBodyComponent } from './visualization-body.component';
+import { NgxDhis2TableModule } from '../../modules/ngx-dhis2-table/ngx-dhis2-table.module';
+import { NgxDhis2ChartModule } from '../../modules/ngx-dhis-chart/ngx-dhis2-chart.module';
 
 describe('VisualizationBodyComponent', () => {
   let component: VisualizationBodyComponent;
@@ -8,9 +10,9 @@ describe('VisualizationBodyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VisualizationBodyComponent ]
-    })
-    .compileComponents();
+      imports: [NgxDhis2TableModule, NgxDhis2ChartModule],
+      declarations: [VisualizationBodyComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

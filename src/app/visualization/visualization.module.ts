@@ -6,7 +6,7 @@ import { NgxDhis2TableModule } from './modules/ngx-dhis2-table/ngx-dhis2-table.m
 
 @NgModule({
   declarations: [...components],
-  exports: [...components],
+  exports: [...components, NgxDhis2ChartModule, NgxDhis2TableModule],
   imports: [CommonModule, NgxDhis2ChartModule, NgxDhis2TableModule]
 })
 export class VisualizationModule {}

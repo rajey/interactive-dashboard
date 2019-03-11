@@ -11,8 +11,8 @@ export function getChartConfiguration(
     customChartType !== ''
       ? customChartType.toLowerCase()
       : visualizationSettings.type
-        ? visualizationSettings.type.toLowerCase()
-        : 'column';
+      ? visualizationSettings.type.toLowerCase()
+      : 'column';
   return {
     renderId: renderId,
     type: chartType,
@@ -75,16 +75,20 @@ export function getChartConfiguration(
     multiAxisTypes: visualizationSettings.hasOwnProperty('selectedChartTypes')
       ? visualizationSettings.selectedChartTypes
       : [],
-    xAxisType: visualizationLayout.rows
-      ? _.map(visualizationLayout.rows, (row: any) => row.dimension)
-      : ['dx'],
+    xAxisType:
+      visualizationLayout && visualizationLayout.rows
+        ? _.map(visualizationLayout.rows, (row: any) => row.dimension)
+        : ['dx'],
     yAxisType:
-      visualizationLayout.columns && visualizationLayout.columns[0]
+      visualizationLayout &&
+      visualizationLayout.columns &&
+      visualizationLayout.columns[0]
         ? visualizationLayout.columns[0].dimension
         : 'ou',
-    zAxisType: visualizationLayout.filters
-      ? _.map(visualizationLayout.filters, (filter: any) => filter.dimension)
-      : ['pe'],
+    zAxisType:
+      visualizationLayout && visualizationLayout.filters
+        ? _.map(visualizationLayout.filters, (filter: any) => filter.dimension)
+        : ['pe'],
     dataSelections
   };
 }

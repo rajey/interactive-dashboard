@@ -1,9 +1,9 @@
 <div class="visualization-body-container">
-  <div class="chart-visualization">
+  <div class="chart-visualization" *ngIf="visualizationLayers">
     <ngx-dhis2-chart-list
-      [visualizationId]="id"
+      [visualizationId]="visualizationId"
       [visualizationLayers]="visualizationLayers"
-      [chartHeight]="visualizationUiConfig.height"
+      [chartHeight]="visualizationHeight || '450px'"
     ></ngx-dhis2-chart-list>
   </div>
 </div>

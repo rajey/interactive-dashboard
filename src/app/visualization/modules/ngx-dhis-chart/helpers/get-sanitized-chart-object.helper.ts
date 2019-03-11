@@ -67,22 +67,27 @@ export function getSanitizedChartObject(
   });
 
   let categoryCount = 0;
-  const newCategories = _.map(chartObject.xAxis.categories, (category: any) => {
-    if (!category.categories) {
-      return category;
-    }
-    const newCategory = {
-      ...category,
-      categories: _.filter(
-        category.categories,
-        (innerCategory: any, innerCategoryIndex: number) =>
-          newDataIndexes.indexOf(innerCategoryIndex + categoryCount) === -1
-      )
-    };
+  const newCategories = _.map(
+    chartObject && chartObject.xAxis ? chartObject.xAxis.categories || [] : [],
+    (category: any) => {
+      if (!category.categories) {
+        return category;
+      }
+      const newCategory = {
+        ...category,
+        categories: _.filter(
+          category.categories,
+          (innerCategory: any, innerCategoryIndex: number) =>
+            newDataIndexes.indexOf(innerCategoryIndex + categoryCount) === -1
+        )
+      };
 
-    categoryCount += category.categories ? category.categories.length : 0;
-    return newCategory;
-  });
+      categoryCount += category.categories
+        ? (category.categories || []).length
+        : 0;
+      return newCategory;
+    }
+  );
 
   return {
     ...chartObject,
