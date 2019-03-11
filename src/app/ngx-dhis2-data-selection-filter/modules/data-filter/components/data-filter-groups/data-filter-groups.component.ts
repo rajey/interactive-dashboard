@@ -10,14 +10,14 @@ import {
 } from '@angular/core';
 import { DRAG_ICON, ARROW_DOWN_ICON } from '../../icons';
 import * as _ from 'lodash';
-import { generateUid } from '../../../../../../../helpers/generate-uid.helper';
 import { DragulaService } from 'ng2-dragula';
 import { removeMemberFromGroup } from '../../helpers/remove-member-from-group.helper';
-import { DataGroup } from 'src/app/models';
 import { updateDataGroupInList } from '../../helpers/update-data-group-in-list.helper';
 import { addDefaultDataGroupInList } from '../../helpers/add-default-data-group-in-list.helper';
 import { removeGroupFromList } from '../../helpers/remove-group-from-list.helper';
 import { addMembersToGroups } from '../../helpers/add-members-to-group.helper';
+import { generateUid } from 'src/app/core';
+import { DataGroup } from 'src/app/core/models/data-group.model';
 
 @Component({
   // tslint:disable-next-line:component-selector

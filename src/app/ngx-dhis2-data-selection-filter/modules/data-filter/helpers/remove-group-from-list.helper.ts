@@ -1,5 +1,5 @@
-import { DataGroup } from 'src/app/models';
 import * as _ from 'lodash';
+import { DataGroup } from 'src/app/core/models/data-group.model';
 
 export function removeGroupFromList(
   dataGroups: DataGroup[],

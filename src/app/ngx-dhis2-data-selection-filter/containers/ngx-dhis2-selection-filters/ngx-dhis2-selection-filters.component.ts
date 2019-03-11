@@ -58,7 +58,7 @@ export class NgxDhis2SelectionFiltersComponent implements OnInit, OnChanges {
   private _selectedFilter: string;
 
   constructor() {
-    this.showFilters = this.showFilterBody = false;
+    this.showFilters = this.showFilterBody = true;
 
     // icons initializations
     this.filterIcon = FILTER_ICON;

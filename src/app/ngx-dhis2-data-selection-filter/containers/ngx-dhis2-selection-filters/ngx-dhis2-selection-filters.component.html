@@ -1,10 +1,6 @@
-<div
-  class="selection-filter-container"
-  appClickOutside
-  (clickOutside)="onClickOutside()"
->
+<div class="selection-filter-container">
   <!--selection filter header-->
-  <div class="selection-filter-header">
+  <div class="selection-filter-header" *ngIf="filterConfig?.showFilterHeader">
     <button
       class="selection-filter-btn filter-control-btn"
       (click)="toggleFilters($event)"
@@ -141,7 +137,7 @@
     <!--end of data filter-->
 
     <!-- legend configguration -->
-    <app-legend-set-configuration
+    <!-- <app-legend-set-configuration
       *ngIf="_selectedFilter === 'LEGEND_CONFIGURATION'"
       [selectedItems]="selectedData"
       [selectedGroups]="selectedDataGroups"
@@ -151,26 +147,26 @@
       (legendSetConfigurationUpdate)="
         onFilterUpdate($event, 'LEGEND_CONFIGURATION')
       "
-    ></app-legend-set-configuration>
+    ></app-legend-set-configuration> -->
     <!-- end of legend configguration -->
 
-    <!--period filter-->
-    <app-period-filter
-      *ngIf="selectedFilter === 'PERIOD'"
-      [selectedPeriods]="selectedPeriods"
-      (periodFilterClose)="onFilterClose($event, 'PERIOD')"
-      (periodFilterUpdate)="onFilterUpdate($event, 'PERIOD')"
-    ></app-period-filter>
-    <!--end of period filter-->
-
     <!--org unit filter-->
+    <div class="selection-filter-label">Organisation unit</div>
     <ngx-dhis2-org-unit-filter
-      *ngIf="selectedFilter === 'ORG_UNIT'"
       [selectedOrgUnitItems]="selectedOrgUnits"
       (orgUnitClose)="onFilterClose($event, 'ORG_UNIT')"
       (orgUnitUpdate)="onFilterUpdate($event, 'ORG_UNIT')"
     ></ngx-dhis2-org-unit-filter>
     <!--end of org unit filter-->
+
+    <!--period filter-->
+    <div class="selection-filter-label">Period</div>
+    <app-period-filter
+      [selectedPeriods]="selectedPeriods"
+      (periodFilterClose)="onFilterClose($event, 'PERIOD')"
+      (periodFilterUpdate)="onFilterUpdate($event, 'PERIOD')"
+    ></app-period-filter>
+    <!--end of period filter-->
 
     <app-layout
       [layoutModel]="layoutItem"

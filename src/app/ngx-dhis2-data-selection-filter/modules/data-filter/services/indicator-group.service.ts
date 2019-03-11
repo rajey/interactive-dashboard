@@ -3,25 +3,25 @@ import { of } from 'rxjs';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
 
 import { NgxDhis2HttpClientService } from '@hisptz/ngx-dhis2-http-client';
-import { AppDatabaseService } from 'src/app/services/app-database.service';
 import { IndicatorGroup } from '../models';
+import { IndexDbService } from 'src/app/core';
 
 @Injectable({ providedIn: 'root' })
 export class IndicatorGroupService {
   constructor(
     private http: NgxDhis2HttpClientService,
-    private appDatabaseService: AppDatabaseService
+    private indexDBService: IndexDbService
   ) {}
 
   loadAll() {
-    return this.appDatabaseService.getAll('indicatorGroups').pipe(
+    return this.indexDBService.getAll('indicatorGroups').pipe(
       catchError(() => of([])),
       switchMap((indicatorGroups: IndicatorGroup[]) =>
         indicatorGroups.length > 0
           ? of(indicatorGroups)
           : this._loadFromApi().pipe(
               tap((indicatorGroupsFromServer: IndicatorGroup[]) => {
-                this.appDatabaseService
+                this.indexDBService
                   .saveBulk('indicatorGroups', indicatorGroupsFromServer)
                   .subscribe(() => {});
               })

@@ -19,8 +19,8 @@ import * as fromDataFilterActions from '../../store/actions/data-filter.actions'
 import * as fromDataFilterReducer from '../../store/reducers/data-filter.reducer';
 import * as fromDataFilterSelectors from '../../store/selectors/data-filter.selectors';
 import { DataFilterPreference } from '../../model/data-filter-preference.model';
-import { DataGroup } from 'src/app/models';
 import { DataFilterGroupsComponent } from '../../components/data-filter-groups/data-filter-groups.component';
+import { DataGroup } from 'src/app/core/models/data-group.model';
 
 @Component({
   // tslint:disable-next-line:component-selector

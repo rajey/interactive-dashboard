@@ -1,4 +1,4 @@
-import { DataGroup } from 'src/app/models';
+import { DataGroup } from 'src/app/core/models/data-group.model';
 
 export function removeMemberFromGroup(group: DataGroup, member: any) {
   if (!group) {

@@ -1,5 +1,4 @@
 .ngx-dhis2-org-unit-filter__container {
-  min-height: 340px;
   width: 100%;
 }
 
@@ -11,13 +10,13 @@
 .ngx-dhis2-org-unit-filter__selection-container {
   display: flex;
   justify-content: space-between;
-  min-height: 300px;
+  /* min-height: 300px; */
   width: 100%;
   position: relative;
 }
 
 .ngx-dhis2-org-unit-filter__org-unit-selection {
-  width: 220px;
+  width: 240px;
   position: relative;
 }
 

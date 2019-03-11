@@ -20,4 +20,9 @@ export interface OrgUnitFilterConfig {
   singleSelection: boolean;
 
   closeOnDestroy: boolean;
+
+  showOrgUnitOptions: boolean;
+  showOrgUnitSelectionSummary: boolean;
+  showUserOrgUnitSection: boolean;
+  showOrgUnitButtons: boolean;
 }

@@ -13,7 +13,15 @@
 
     <!-- dashboard global filters -->
     <div class="dashboard-global-filters">
-      Filters
+      <ngx-dhis2-selection-filters
+        (filterUpdate)="onFilterUpdateAction($event)"
+        [dataSelections]="globalDataSelections"
+        [selectionFilterConfig]="selectionFilterConfig"
+        [currentUserHasAuthorities]="currentDashboard?.access?.manage"
+        [saving]="currentDashboard?.saving"
+        (save)="onSaveDashboard()"
+      >
+      </ngx-dhis2-selection-filters>
     </div>
     <!-- end of dashboard global filters -->
   </div>

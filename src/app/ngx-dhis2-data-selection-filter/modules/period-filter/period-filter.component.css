@@ -2,7 +2,7 @@
   /*display: grid;*/
   /*grid-template-columns: repeat(2, 1fr);*/
   /*border: solid 1px #dddddd;*/
-  padding: 0.2em;
+  padding: 10px;
 }
 
 .period-top-section {
@@ -65,7 +65,7 @@
 .period-selected-body {
   flex: 1;
   padding: 0.2em;
-  height: 220px;
+  height: 170px;
   overflow: auto;
 }
 

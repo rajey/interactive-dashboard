@@ -61,6 +61,7 @@ export class NgxDhis2OrgUnitFilterComponent implements OnInit, OnDestroy {
   loadingOrgUnitLevels$: Observable<boolean>;
   loadingOrgUnitGroups$: Observable<boolean>;
   loadingOrgUnits$: Observable<boolean>;
+  showOrgUnitOptions: boolean;
 
   @Output()
   orgUnitUpdate: EventEmitter<any> = new EventEmitter<any>();
