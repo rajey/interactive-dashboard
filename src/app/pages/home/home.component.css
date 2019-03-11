@@ -1,26 +1,22 @@
 .dashboard-container {
-  grid-gap: 3px;
-  margin: 10px;
 }
 
 .dashboard-header {
   grid-column: span 2;
-  border: solid thin;
-  height: calc(100vh - 60px);
+  border-right: solid thin #eeeeee;
+  background: #f8f9fa;
+  height: calc(100vh - 55px);
 }
 
 .dashboard-menu {
-  height: 40%;
-  border: solid thin;
+  height: 45%;
 }
 
 .dashboard-global-filters {
-  height: 60%;
-  border: solid thin;
+  height: 55%;
 }
 
 .dashboard-content {
   grid-column: span 10;
-  max-height: calc(100vh - 60px);
-  border: solid thin;
+  height: calc(100vh - 55px);
 }

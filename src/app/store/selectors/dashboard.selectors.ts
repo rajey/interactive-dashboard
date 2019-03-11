@@ -59,10 +59,12 @@ export const getDashboardById = dashboardId =>
 
 export const getDashboardMenuList = createSelector(
   getAllDashboards,
-  (dashboards: Dashboard[]) =>
+  getCurrentDashboardId,
+  (dashboards: Dashboard[], currentDashboardId: string) =>
     (dashboards || []).map((dashboard: Dashboard) => {
       return {
         id: dashboard.id,
+        current: currentDashboardId === dashboard.id,
         name: dashboard.name
       };
     })

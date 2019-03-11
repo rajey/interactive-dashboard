@@ -1,0 +1,9 @@
+.dashboard-menu-item {
+  display: flex;
+  padding-left: 15px;
+  height: 40px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+  color: #777777;
+}
