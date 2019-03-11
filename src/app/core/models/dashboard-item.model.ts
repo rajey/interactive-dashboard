@@ -10,6 +10,7 @@ export interface DashboardItem {
   y?: number;
   interpretationCount?: number;
   visualizationLayers?: any[];
+  currentType?: string;
   chart?: { id: string; name?: string };
   reportTable?: { id: string; name?: string };
   map?: { id: string; name?: string };
