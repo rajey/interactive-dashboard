@@ -5,6 +5,7 @@ import { DashboardPreferencesEffects } from './dashboard-preferences.effects';
 import { DashboardEffects } from './dashboard.effects';
 import { DashboardItemEffects } from './dashboard-item.effects';
 import { FavoriteEffects } from './favorite.effects';
+import { AnalyticsEffects } from './analytics.effects';
 
 export const effects: any[] = [
   UserEffects,
@@ -13,5 +14,6 @@ export const effects: any[] = [
   DashboardPreferencesEffects,
   DashboardEffects,
   DashboardItemEffects,
-  FavoriteEffects
+  FavoriteEffects,
+  AnalyticsEffects
 ];

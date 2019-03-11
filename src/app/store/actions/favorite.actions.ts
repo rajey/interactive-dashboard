@@ -12,7 +12,11 @@ export enum FavoriteActionTypes {
 
 export class LoadFavoriteAction implements Action {
   readonly type = FavoriteActionTypes.LoadFavorite;
-  constructor(public favoriteId: string, public favoriteType: string) {}
+  constructor(
+    public favoriteId: string,
+    public favoriteType: string,
+    public dashboardItemId: string
+  ) {}
 }
 
 export class AddFavoritesAction implements Action {

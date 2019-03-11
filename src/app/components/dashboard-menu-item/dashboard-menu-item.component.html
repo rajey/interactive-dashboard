@@ -1,6 +1,8 @@
 <div class="dashboard-menu-item-container">
   <a
-    class="{{ 'dashboard-menu-item-' + dashboardMenuItem?.id }}"
+    class="dashboard-menu-item {{
+      dashboardMenuItem?.current ? 'text-primary' : ''
+    }}"
     (click)="onSetDashboard($event, dashboardMenuItem)"
     >{{ dashboardMenuItem?.name }}</a
   >

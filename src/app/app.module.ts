@@ -22,6 +22,10 @@ import { CoreModule, RouteSerializer } from './core';
 import { pages } from './pages';
 import { effects } from './store/effects';
 import { metaReducers, reducers } from './store/reducers';
+import { containers } from './containers';
+import { AnalyticsModule } from './analytics/analytics.module';
+import { VisualizationModule } from './visualization/visualization.module';
+import { NgxDhis2SelectionFiltersModule } from './ngx-dhis2-data-selection-filter/ngx-dhis2-selection-filters.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, ...pages, ...components],
+  declarations: [AppComponent, ...pages, ...components, ...containers],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -38,9 +42,16 @@ export function HttpLoaderFactory(http: HttpClient) {
       namespace: 'hisptz',
       version: 1,
       models: {
-        users: 'id'
+        users: 'id',
+        organisationUnitLevels: 'id',
+        organisationUnits: 'id',
+        organisationUnitGroups: 'id'
       }
     }),
+
+    AnalyticsModule,
+    VisualizationModule,
+    NgxDhis2SelectionFiltersModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),

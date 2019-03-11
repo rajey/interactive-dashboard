@@ -16,11 +16,16 @@ import {
   DashboardItemActionTypes,
   InitializeDashboardItemsAction,
   LoadDashboardItemAction,
-  LoadDashboardItemFailAction
+  LoadDashboardItemFailAction,
+  UpdateDashboardItemAction
 } from '../actions/dashboard-item.actions';
 import { LoadFavoriteAction } from '../actions/favorite.actions';
 import { State } from '../reducers';
 import { getAllDashboardItems } from '../selectors';
+import {
+  AnalyticsActionTypes,
+  LoadAnalyticsSuccessAction
+} from '../actions/analytics.actions';
 
 @Injectable()
 export class DashboardItemEffects {
@@ -82,11 +87,26 @@ export class DashboardItemEffects {
 
         if (favorite && _.isPlainObject(favorite)) {
           this.store.dispatch(
-            new LoadFavoriteAction(favorite.id, favoriteType)
+            new LoadFavoriteAction(
+              favorite.id,
+              favoriteType,
+              action.dashboardItem.id
+            )
           );
         }
       }
     })
+  );
+
+  @Effect()
+  loadAnalyticsSucess$: Observable<any> = this.actions$.pipe(
+    ofType(AnalyticsActionTypes.LoadAnalyticsSuccess),
+    map(
+      (action: LoadAnalyticsSuccessAction) =>
+        new UpdateDashboardItemAction(action.dashboardItemId, {
+          visualizationLayers: action.visualizationLayers
+        })
+    )
   );
   constructor(
     private actions$: Actions,

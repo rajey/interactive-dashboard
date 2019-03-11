@@ -5,6 +5,6 @@ export function getDashboardItemGripColumnFromWidth(
     window.innerWidth ||
     document.documentElement.clientWidth ||
     document.body.clientWidth;
-  console.log(windowWidth);
-  return 'span 4';
+  // TODO: FIND GRID SPAN BASED ON INCOMING WIDTH
+  return 'span 12';
 }
