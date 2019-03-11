@@ -1,8 +1,5 @@
 import * as _ from 'lodash';
 
-import { getMergedTableRowsOrColumnsDetails } from './get-merged-table-rows-or-columns-details.helper';
-import { getTableHeaderRowsWithDataRowIds } from './get-table-headers-rows-with-data-rows-ids.helper';
-import { getFilteredTableRows } from './get-filtered-table-rows.helper';
 import { getMatchingTableRowsOrColumns } from './get-matching-table-rows-or-columns.helper';
 
 export function getMergedTableColumns(

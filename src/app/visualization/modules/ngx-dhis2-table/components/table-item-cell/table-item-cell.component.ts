@@ -69,14 +69,9 @@ export class TableItemCellComponent implements OnInit {
       this.dataValue
     );
 
-    this.color =
-      legends.length > 0
-        ? associatedLegend && this.dataValue !== ''
-          ? associatedLegend.color
-          : '#ffffff'
-        : this.dataValue !== ''
-        ? '#eeeeee'
-        : '#ffffff';
+    this.color = associatedLegend
+      ? associatedLegend.color || '#ffffff'
+      : '#ffffff';
 
     // Find table cell tooltip
     this.tooltip =

@@ -1,9 +1,26 @@
 <div class="visualization-body-container">
-  <div class="chart-visualization" *ngIf="visualizationLayers">
+  <!-- chart visualization -->
+  <div
+    class="chart-visualization"
+    *ngIf="visualizationType === 'CHART' && visualizationLayers"
+  >
     <ngx-dhis2-chart-list
       [visualizationId]="visualizationId"
       [visualizationLayers]="visualizationLayers"
       [chartHeight]="visualizationHeight || '450px'"
     ></ngx-dhis2-chart-list>
   </div>
+  <!-- end of chart visualization -->
+
+  <!-- table visualization -->
+  <div
+    class="table-visualization"
+    [style.height]="visualizationHeight || '450px'"
+    *ngIf="visualizationType === 'TABLE' && visualizationLayers"
+  >
+    <ngx-dhis2-table-list
+      [visualizationLayers]="visualizationLayers"
+    ></ngx-dhis2-table-list>
+  </div>
+  <!-- end of table visualization -->
 </div>

@@ -14,6 +14,9 @@ export class VisualizationBodyComponent implements OnInit {
 
   @Input()
   visualizationId: string;
+
+  @Input()
+  visualizationType: string;
   constructor() {}
 
   ngOnInit() {}
