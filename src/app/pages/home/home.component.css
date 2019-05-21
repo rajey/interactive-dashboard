@@ -1,23 +1,19 @@
-.dashboard-container {
-}
-
 .dashboard-header {
-  grid-column: span 3;
+  grid-column: span 2;
   border-right: solid thin #eeeeee;
-  background: #f8f9fa;
   height: calc(100vh - 55px);
 }
 
 .dashboard-menu {
-  height: 30%;
+  height: 40%;
 }
 
 .dashboard-global-filters {
-  height: 70%;
+  height: 60%;
   overflow: auto;
 }
 
 .dashboard-content {
-  grid-column: span 9;
+  grid-column: span 10;
   height: calc(100vh - 55px);
 }

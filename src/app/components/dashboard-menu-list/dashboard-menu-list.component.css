@@ -11,9 +11,8 @@
 
 .dashboard-menu-list-header {
   padding-left: 15px;
-  height: 40px;
+  padding-top: 7px;
+  height: 45px;
   display: flex;
   align-items: center;
-  font-size: 13px;
-  border-bottom: solid thin #eeeeee;
 }
